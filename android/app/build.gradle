@@ -32,26 +32,25 @@ android {
         }
     }
 
-    lintOptions {
-        checkReleaseBuilds false
-        // Or, if you prefer, you can continue to check for errors in release builds,
-        // but continue the build even when errors are found:
-        abortOnError false
-    }
 
     buildFeatures {
         viewBinding true
     }
 
-    aaptOptions {
-        noCompress "tflite", "mp3"
-    }
     compileOptions {
         coreLibraryDesugaringEnabled true
 
         sourceCompatibility = '11'
         targetCompatibility = '11'
     }
+    androidResources {
+        noCompress 'tflite', 'mp3'
+    }
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+    namespace 'org.openbot'
 }
 
 // Download default models
